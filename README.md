@@ -387,3 +387,183 @@ for student in students:
 while student_stack:
     student = student_stack.pop()
     print(student)
+# Create a list of songs with their genres
+songs = [
+    {"title": "Song 1", "genre": "Jazz"},
+    {"title": "Song 2", "genre": "Melody"},
+    {"title": "Song 3", "genre": "Pop"},
+    {"title": "Song 4", "genre": "Jazz"},
+    {"title": "Song 5", "genre": "Pop"},
+    {"title": "Song 6", "genre": "Melody"},
+]
+
+#
+desired_order = ["Jazz", "Pop", "Melody"]
+
+# Sort the songs based on the desired genre order
+sorted_songs = sorted(songs, key=lambda song: desired_order.index(song["genre"]))
+
+for song in sorted_songs:
+    print(f"{song['title']}: {song['genre']}")
+
+
+
+import pandas as pd
+
+music_data = [
+    {'track_name': 'Song 1', 'artist': 'Artist 1', 'genre': 'Rock'},
+    {'track_name': 'Song 2', 'artist': 'Artist 2', 'genre': 'Pop'},
+    {'track_name': 'Song 3', 'artist': 'Artist 3', 'genre': 'Jazz'},
+    {'track_name': 'Song 4', 'artist': 'Artist 4', 'genre': 'Pop'},
+    # Add more songs with genres
+]
+
+# Create a DataFrame from the music data
+music_df = pd.DataFrame(music_data)
+
+
+selected_genres = ['Rock', 'Pop']
+
+# Filter music by selected genres
+filtered_music = music_df[music_df['genre'].isin(selected_genres)]
+
+# Display the filtered music
+print("Filtered Music:")
+print(filtered_music)
+
+
+
+
+import pandas as pd
+
+music_data = [
+    {'track_name': 'Song 1', 'artist': 'Artist 1', 'genre': 'Rock', 'user_rating': 4.5},
+    {'track_name': 'Song 2', 'artist': 'Artist 2', 'genre': 'Pop', 'user_rating': 3.7},
+    {'track_name': 'Song 3', 'artist': 'Artist 3', 'genre': 'Jazz', 'user_rating': 4.9},
+    {'track_name': 'Song 4', 'artist': 'Artist 4', 'genre': 'Pop', 'user_rating': 4.2},
+    # Add more songs with genres and user ratings
+]
+
+# Create a DataFrame from the music data
+music_df = pd.DataFrame(music_data)
+
+# Simulated user input (selected genres and minimum user rating)
+selected_genres = ['Rock', 'Pop']
+min_user_rating = 4.0  # Adjust this value based on the user's preference
+
+# Filter music by selected genres and user rating
+filtered_music = music_df[(music_df['genre'].isin(selected_genres)) & (music_df['user_rating'] >= min_user_rating)]
+
+# Display the filtered music
+print("Filtered Music:")
+print(filtered_music)
+
+
+
+
+
+
+import pandas as pd
+
+# Sample music dataset (replace this with your actual dataset)
+music_data = [
+    {'track_name': 'Song 1', 'artist': 'Artist 1', 'genre': 'Rock', 'user_rating': 4.5},
+    {'track_name': 'Song 2', 'artist': 'Artist 2', 'genre': 'Pop', 'user_rating': 3.7},
+    {'track_name': 'Song 3', 'artist': 'Artist 3', 'genre': 'Jazz', 'user_rating': 4.9},
+    {'track_name': 'Song 4', 'artist': 'Artist 4', 'genre': 'Pop', 'user_rating': 4.2},
+    {'track_name': 'Song 5', 'artist': 'Artist 5', 'genre': 'Rock', 'user_rating': 4.1},
+    # Add more songs with genres and user ratings
+]
+
+# Create a DataFrame from the music data
+music_df = pd.DataFrame(music_data)
+
+# Simulated user input (selected genres and minimum user rating)
+selected_genres = ['Rock', 'Pop', 'Jazz']
+min_user_rating = 4.0  # Adjust this value based on the user's preference
+
+# Filter music by selected genres and user rating
+filtered_music = music_df[(music_df['genre'].isin(selected_genres)) & (music_df['user_rating'] > min_user_rating)]
+
+# Create separate playlists for each genre
+playlists = {}
+
+for genre in selected_genres:
+    genre_filtered_music = filtered_music[filtered_music['genre'] == genre]
+    playlists[genre] = genre_filtered_music[['track_name', 'artist']]
+
+# Display the playlists
+for genre, tracks in playlists.items():
+    print(f"{genre} Playlist:")
+    print(tracks)
+    print()
+
+
+music_data = [
+    {'track_name': 'Song 1', 'artist': 'Artist 1', 'genre': 'Rock', 'user_rating': 4.5},
+    {'track_name': 'Song 2', 'artist': 'Artist 2', 'genre': 'Pop', 'user_rating': 3.7},
+    {'track_name': 'Song 3', 'artist': 'Artist 3', 'genre': 'Jazz', 'user_rating': 4.9},
+    {'track_name': 'Song 4', 'artist': 'Artist 4', 'genre': 'Pop', 'user_rating': 4.2},
+    {'track_name': 'Song 5', 'artist': 'Artist 5', 'genre': 'Rock', 'user_rating': 4.1},
+    # Add more songs with genres and user ratings
+]
+
+# Create separate playlists for each genre
+rock_playlist = []
+jazz_playlist = []
+pop_playlist = []
+
+# Iterate through the music data and populate the playlists based on genre
+for track in music_data:
+    if track['genre'] == 'Rock':
+        rock_playlist.append(track)
+    elif track['genre'] == 'Jazz':
+        jazz_playlist.append(track)
+    elif track['genre'] == 'Pop':
+        pop_playlist.append(track)
+# Filter the playlists based on user ratings above 4.0
+rock_playlist_filtered = [track for track in rock_playlist if track['user_rating'] > 4.0]
+jazz_playlist_filtered = [track for track in jazz_playlist if track['user_rating'] > 4.0]
+pop_playlist_filtered = [track for track in pop_playlist if track['user_rating'] > 4.0]
+
+
+
+# Display the filtered playlists
+print("Rock Playlist (Filtered by User Rating > 4.0):")
+print(rock_playlist_filtered)
+print("\nJazz Playlist (Filtered by User Rating > 4.0):")
+print(jazz_playlist_filtered)
+print("\nPop Playlist (Filtered by User Rating > 4.0):")
+print(pop_playlist_filtered)
+
+
+# Sample list of songs with possible duplicates
+songs = ["Song A", "Song B", "Song A", "Song C", "Song B", "Song D", "Song E", "Song D"]
+unique_songs = set()
+non_repeated_songs = []
+for song in songs:
+    # If the song is not in the set of unique songs, add it to both the set and the new list
+    if song not in unique_songs:
+        unique_songs.add(song)
+        non_repeated_songs.append(song)
+
+# Print the list of non-repeated songs
+print("Non-repeated songs:")
+for song in non_repeated_songs:
+    print(song)
+
+
+# Sample music preferences for two individuals
+person1_music = ["song1", "song2", "song3", "song4", "song5"]
+person2_music = ["song2", "song3", "song6", "song7", "song8"]
+
+# Calculate mutual interest in music
+mutual_interest = len(set(person1_music) & set(person2_music))
+
+# Calculate the percentage of mutual interest
+total_songs = len(person1_music) + len(person2_music)
+percentage_mutual_interest = (mutual_interest / total_songs) * 100
+
+print(f"Mutual interest: {mutual_interest} songs")
+print(f"Percentage mutual interest: {percentage_mutual_interest:.2f}%")
+
